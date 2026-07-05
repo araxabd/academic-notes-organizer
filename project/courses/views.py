@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Course
+from .forms import CourseForm
 
 @login_required
 def course_list(request):
@@ -19,3 +20,16 @@ def course_detail(request, course_id):
             'notes': notes
             }
     return render(request, 'courses/course_detail.html', context)
+
+@login_required
+def course_create(request):
+    if request.method == "POST":
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            course = form.save(commit=False)
+            course.owner = request.user
+            course.save()
+            return redirect('courses:list')
+    else:
+        form = CourseForm()
+    return render(request, 'courses/course_create.html', { 'form': form })
