@@ -24,3 +24,23 @@ def note_create(request, course_id):
     else:
         form = NoteForm()
     return render(request, 'notes/note_create.html', {'form': form})
+
+@login_required
+def note_update(request, note_id):
+    note = get_object_or_404(Note, id=note_id, owner=request.user)
+    if request.method == "POST":
+        form = NoteForm(request.POST, instance=note)
+        if form.is_valid():
+            form.save()
+            return redirect('courses:detail', course_id=note.course.id)
+    else:
+        form = NoteForm(instance=note)
+    return render(request, 'notes/note_update.html', {'form': form})
+
+@login_required
+def note_delete(request, note_id):
+    note = get_object_or_404(Note, id=note_id, owner=request.user)
+    if request.method == "POST":
+        note.delete()
+        return redirect("courses:detail", course_id=note.course.id)
+    return render(request, 'notes/note_delete.html', {'note': note})
