@@ -45,3 +45,11 @@ def course_update(request, course_id):
     else:
         form = CourseForm(instance=course)
         return render(request, 'courses/course_update.html', { 'form': form })
+
+@login_required
+def course_delete(request, course_id):
+    course = get_object_or_404(Course, id=course_id, owner=request.user)
+    if request.method == "POST":
+        course.delete()
+        return redirect("courses:list")
+    return render(request, 'courses/course_delete.html', {'course': course})
