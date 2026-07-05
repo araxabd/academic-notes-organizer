@@ -2,5 +2,5 @@
 <h4>{{ course.desc }}</h4>
 
 {% for note in notes %}
-<strong><a href="">{{ note.title }}</a>
+<strong><a href="{% url 'notes:detail' note.id %}">{{ note.title }}</a>
 {% endfor %}
