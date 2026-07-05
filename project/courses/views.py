@@ -33,3 +33,15 @@ def course_create(request):
     else:
         form = CourseForm()
     return render(request, 'courses/course_create.html', { 'form': form })
+
+@login_required
+def course_update(request, course_id):
+    course = get_object_or_404(Course, id=course_id, owner=request.user)
+    if request.method == "POST":
+        form = CourseForm(request.POST, instance=course)
+        if form.is_valid():
+           form.save()
+           return redirect('courses:list')
+    else:
+        form = CourseForm(instance=course)
+        return render(request, 'courses/course_update.html', { 'form': form })
