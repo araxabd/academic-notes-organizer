@@ -1,6 +1,6 @@
 <h1>{{ course.title }}</h1>
 <h4>{{ course.desc }}</h4>
-
+<a href="{% url 'notes:create' course.id %}">add note</a>
 {% for note in notes %}
 <strong><a href="{% url 'notes:detail' note.id %}">{{ note.title }}</a>
 {% endfor %}
