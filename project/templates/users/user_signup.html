@@ -1,10 +1,5 @@
 <form method="POST">
 	{% csrf_token %}
-	<div>
-		{% for err in form.field.errors %}
-		<h5>{{ err }}</h5>
-		{% endfor %}
-	</div>
 	{{ form.as_p }}
 	<button type="submit">submit</button>
 </form>
