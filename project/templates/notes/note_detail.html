@@ -1,4 +1,10 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
 <h1>{{ note.title }}</h1>
 <h2>{{ note.desc }}</h2>
 <p>{{ note.content }}</p>
 <sup>{{ note.created }}</sup>
+
+{% endblock %}
