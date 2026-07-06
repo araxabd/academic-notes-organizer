@@ -2,12 +2,31 @@
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
-		<title></title>
+		<title>{% block title %}{% endblock %}</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="{% static 'styles/base.css' %}" />
 	</head>
 	<body>
+		<nav class="navbar">
+			<a href="" class="logo">Note Organizer</a>
+
+			<input type="checkbox" id="menu-toggle" />
+
+			<label for="menu-toggle" class="ham">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
+			<ul class="nav-links">
+				<li><a href="{% url 'courses:list' %}">Courses List</a></li>
+				<li><a href="{% url 'users:login' %}">Login</a></li>
+			</ul>
+		</nav>
+
+		<div class="container">
 		{% block content %}
 		{% endblock %}
+		</div>
 	</body>
 </html>

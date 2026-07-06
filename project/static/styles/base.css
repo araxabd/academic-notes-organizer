@@ -1,4 +1,117 @@
-html, body {
-	background: black;
-	color: white;
+:root {
+	--back: #4e545e;
+	--fore: #3c5372;
+	--text: white;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: var(--back);
+	padding: 1rem;
+	font-family: sans-serif;
+}
+
+.navbar {
+	background: var(--fore);
+	padding: 0.75rem 1.5rem;
+	border-radius: 12px;
+	border: 2px solid var(--text);
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.logo {
+	font-weight: 600;
+	font-size: 1.25rem;
+	color: var(--text);
+	text-decoration: none;
+}
+
+#menu-toggle {
+	display: none;
+}
+
+.ham {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	cursor: pointer;
+	padding: 4px 0;
+}
+
+.ham span {
+	display: block;
+	width: 26px;
+	height: 3px;
+	background: var(--text);
+	border-radius: 4px;
+	transition: 0.2s;
+}
+
+.nav-links {
+	display: flex;
+	gap: 1.5rem;
+	list-style: none;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: var(--text);
+	font-size: 1rem;
+	padding: 0.3rem 0;
+	border-bottom: 2px solid transparent;
+	transition: 0.15s;
+}
+
+.nav-links a:hover {
+	border-bottom-color: var(--text);
+}
+
+@media (max-width: 600px) {
+	.ham {
+		display: flex;
+	}
+
+	.nav-links {
+		display: none;
+		width: 100%;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 1rem 0 0.5rem 0;
+		border-top: 1px solid var(--text);
+		margin-top: 0.75rem;
+	}
+	
+	.nav-links a {
+		display: block;
+		padding: 0.6rem 0.25rem;
+		border-bottom: none;
+		width: 100%;
+	}
+
+	.nav-links a:hover {
+		background: var(--back);
+		border-radius: 6px;
+		padding-left: 0.5rem;
+	}
+
+	#menu-toggle:checked ~ .nav-links {
+		display: flex;
+	}
+}
+
+
+.container {
+	max-width: 1000px;
+	margin: 2rem auto;
+}
+
