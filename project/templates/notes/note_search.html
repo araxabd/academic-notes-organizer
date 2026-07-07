@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+{% for note in notes %}
+<a href="{% url 'notes:detail' note.id %}"><h2>{{ note.title }}</h2></a>
+<p> {{ note.desc }}</p>
+{% empty %}
+<h5>There is no notes matching the pattern!</h5>
+{% endfor %}
+
+{% endblock %}

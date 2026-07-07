@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from courses.models import Course
 from .models import Note
 from .forms import NoteForm
@@ -44,3 +45,9 @@ def note_delete(request, note_id):
         note.delete()
         return redirect("courses:detail", course_id=note.course.id)
     return render(request, 'notes/note_delete.html', {'note': note})
+
+@login_required
+def note_search(request):
+    q = request.GET.get('q', '')
+    notes = Note.objects.filter(Q(owner=request.user) & ( Q(title__icontains=q) | Q(content__icontains=q) | Q(desc__icontains=q) | Q(tags__icontains=q)))
+    return render(request, 'notes/note_search.html', {'notes': notes})
