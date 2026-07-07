@@ -5,7 +5,7 @@
 <div class="login-box">
 	<h2>Login</h2>
 	<p class="err">This is some error message. blah blah blah. i want to write error messages here.. this is wonderful, isn't it?</p>
-	<form method="POST" class="login-form"2>
+	<form method="POST" class="login-form">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button type="submit">Login</button>
