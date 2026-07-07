@@ -20,7 +20,11 @@
 			</label>
 			<ul class="nav-links">
 				<li><a href="{% url 'courses:list' %}">Courses List</a></li>
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'users:logout' %}">{{ request.user.get_username }}: Logout</a></li>
+				{% else %}
 				<li><a href="{% url 'users:login' %}">Login</a></li>
+				{% endif %}
 			</ul>
 		</nav>
 		<div class="container">

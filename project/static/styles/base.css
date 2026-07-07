@@ -2,6 +2,7 @@
 	--back: #4e545e;
 	--fore: #3c5372;
 	--text: white;
+	--err: red;
 }
 
 * {
@@ -114,5 +115,128 @@ body {
 	max-width: 1000px;
 	margin: 2rem auto;
 	color: var(--text);
+}
+
+.login-box {
+      background: var(--fore);
+      padding: 2rem 1.5rem;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 380px;
+      border: 1px solid var(--text);
+      margin: 1rem auto;
+}
+
+.login-box h2 {
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin-bottom: 0.2rem;
+      color: var(--text);
+      letter-spacing: -0.3px;
+}
+
+.login-box .err {
+      color: var(--err);
+      background: var(--text);
+      padding: 0.5rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+}
+
+.login-form label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+}
+
+.login-form input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      font-size: 1rem;
+      border: 1px solid var(--text);
+      border-radius: 12px;
+      background: var(--back);
+      transition: 0.15s;
+      margin-bottom: 1.25rem;
+      outline: none;
+}
+
+.login-form input:focus {
+      border-color: #6c7a91;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
+}
+
+.login-form button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      font-weight: 500;
+      background: var(--text);
+      color: black;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 0.25rem;
+}
+
+.login-form button:hover {
+	background: var(--back);
+	color: var(--text);
+}
+
+.login-form button:active {
+      transform: scale(0.98);
+}
+
+.extra {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+}
+
+.extra a {
+	color: var(--text);
+	text-decoration: none;
+	font-weight: 500;
+	border-bottom: 1px dotted var(--back);
+}
+
+.extra a:hover {
+	border-bottom-color: var(--text);
+}
+
+@media (max-width: 480px) {
+	.login-box {
+		padding: 1.5rem 1.2rem;
+		border-radius: 16px;
+	}
+
+	.login-box h2 {
+		font-size: 1.4rem;
+	}
+
+	.login-form input {
+		padding: 0.65rem 0.8rem;
+		font-size: 0.95rem;
+	}
+
+	.login-form button {
+		padding: 0.7rem;
+		font-size: 0.95rem;
+	}
+}
+
+@media (max-width: 360px) {
+	.login-box {
+		padding: 1.2rem 1rem;
+	}
+	.login-box h2 {
+		font-size: 1.2rem;
+	}
 }
 
