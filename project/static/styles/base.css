@@ -240,3 +240,90 @@ body {
 	}
 }
 
+
+.course {
+	background: var(--fore);
+	color: var(--text);
+	padding: 1rem;
+	margin-top: 1rem;
+	border-radius: 5px;
+	border: 2px solid var(--text);
+}
+
+.course small {
+	display: block;
+	margin-top: 1rem;
+}
+
+.course a {
+	text-decoration: none;
+	display: inline-block;
+	background: var(--text);
+	color: var(--back);
+	margin-top: 1rem;
+	padding: 0.5rem;
+	border-radius: 5px;
+	border: 1px solid var(--back);
+}
+
+.course a:hover {
+	background: var(--back);
+	color: var(--text);
+	border-color: var(--text);
+}
+
+.note {
+	text-decoration: none;
+	background: var(--fore);
+	margin-top: 1rem;
+	color: var(--text);
+	padding: 1rem;
+	border: 2px solid var(--text);
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+}
+
+.note:hover {
+	background: var(--text);
+	color: var(--fore);
+	border-color: var(--fore);
+}
+
+.note small {
+	display: block;
+}
+
+.note h5 {
+	font-size: 1.5rem;
+}
+
+.add-note-btn {
+	display: block;
+	background: var(--text);
+	color: var(--fore);
+	border: 2px solid var(--fore);
+	font-size: 1.25rem;
+	border-radius: 5px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.add-note-btn:hover {
+	background: var(--fore);
+	color: var(--text);
+	border-color: var(--text);
+}
+
+.address {
+	margin: 2rem 0;
+	color: var(--text);
+	font-size: 1.5rem;
+	border-top: 2px solid var(--text);
+	border-bottom: 2px solid var(--text);
+	padding: 0.5rem 0;
+}
+.address a {
+	text-decoration: none;
+	color: var(--text);
+}
