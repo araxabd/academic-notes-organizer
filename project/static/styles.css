@@ -152,7 +152,7 @@ body {
       margin-bottom: 0.25rem;
 }
 
-.common-form input {
+.common-form input, .common-form textarea{
       width: 100%;
       padding: 0.7rem 0.9rem;
       font-size: 1rem;
@@ -164,7 +164,7 @@ body {
       outline: none;
 }
 
-.common-form input:focus {
+.common-form input:focus,.common-form textarea:focus {
       border-color: #6c7a91;
       background: white;
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
@@ -220,7 +220,7 @@ body {
 		font-size: 1.4rem;
 	}
 
-	.common-form input {
+	.common-form input, .common-form textarea {
 		padding: 0.65rem 0.8rem;
 		font-size: 0.95rem;
 	}
