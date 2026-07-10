@@ -327,3 +327,29 @@ body {
 	text-decoration: none;
 	color: var(--text);
 }
+
+.searchbar {
+	background: var(--text);
+	padding: 1rem;
+	color: var(--fore);
+}
+
+.searchbar input {
+	outline: none;
+	padding: 0.5rem;
+	font-size: 1rem;
+	border: 2px solid var(--fore);
+	color: var(--fore);
+}
+
+.searchbar button {
+	padding: 1rem;
+	background: var(--fore);
+	color: var(--text);
+	border: none;
+	cursor: pointer;
+}
+
+.searchbar button:hover {
+	box-shadow: 2px 2px 2px black;
+}

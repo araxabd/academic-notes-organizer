@@ -50,4 +50,4 @@ def note_delete(request, note_id):
 def note_search(request):
     q = request.GET.get('q', '')
     notes = Note.objects.filter(Q(owner=request.user) & ( Q(title__icontains=q) | Q(content__icontains=q) | Q(desc__icontains=q) | Q(tags__icontains=q)))
-    return render(request, 'notes/note_search.html', {'notes': notes})
+    return render(request, 'notes/note_search.html', {'notes': notes, 'searched_phrase': q})

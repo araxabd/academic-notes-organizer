@@ -28,9 +28,10 @@
 			</ul>
 		</nav>
 		<div class="container">
-		<form method="GET" action="{% url 'notes:search' %}">
+
+		<form method="GET" action="{% url 'notes:search' %}" class="searchbar">
 			<input type="text" name="q" placeholder="What note do you looking for?..."/>
-			<button type="submit">Search</button>
+			<button type="submit">🔍︎ Search</button>
 		</form>
 
 		{% block content %}

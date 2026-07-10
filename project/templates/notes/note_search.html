@@ -2,11 +2,19 @@
 
 {% block content %}
 
+<div class="address">
+	<a href="{% url 'courses:list' %}">←</a> | Search "{{ searched_phrase }}" &gt;
+</div>
+
 {% for note in notes %}
-<a href="{% url 'notes:detail' note.id %}"><h2>{{ note.title }}</h2></a>
-<p> {{ note.desc }}</p>
+<a href="{% url 'notes:detail' note.id %}" class="note">
+	<h5>{{ note.title }}</h5>
+	<p>{{ note.desc }}</p>
+	<small>Created at: {{ note.created }} | Last update: {{ note.updated }}</small>
+</a>
 {% empty %}
-<h5>There is no notes matching the pattern!</h5>
+<h5>No notes!</h5>
 {% endfor %}
+
 
 {% endblock %}

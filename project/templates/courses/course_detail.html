@@ -14,6 +14,8 @@
 	<p>{{ note.desc }}</p>
 	<small>Created at: {{ note.created }} | Last update: {{ note.updated }}</small>
 </a>
+{% empty %}
+<h5>No notes!</h5>
 {% endfor %}
 
 {% endblock %}
