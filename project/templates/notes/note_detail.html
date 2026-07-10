@@ -8,7 +8,7 @@
 
 <h1>{{ note.title }}</h1>
 <h2>{{ note.desc }}</h2>
-<p>{{ note.content }}</p>
+<p>{{ content_md|safe }}</p>
 <sup>{{ note.created }}</sup>
 
 {% endblock %}

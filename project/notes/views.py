@@ -5,10 +5,13 @@ from courses.models import Course
 from .models import Note
 from .forms import NoteForm
 
+from markdown import markdown
+
 @login_required
 def note_detail(request, note_id):
     note = get_object_or_404(Note, id=note_id, owner=request.user)
-    return render(request, 'notes/note_detail.html', {'note': note})
+    content_md = markdown(note.content)
+    return render(request, 'notes/note_detail.html', {'note': note, 'content_md': content_md})
 
 @login_required
 def note_create(request, course_id):
