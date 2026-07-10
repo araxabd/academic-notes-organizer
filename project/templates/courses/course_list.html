@@ -1,5 +1,8 @@
 {% extends '../base.html' %}
 {% block content %}
+
+<a href="{% url 'courses:create' %}" class="add-btn">+ add course</a>
+
 {% for course in courses %}
 <div class="course">
 	<h2>{{ course.title }}</h2>

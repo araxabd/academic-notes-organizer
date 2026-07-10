@@ -144,7 +144,7 @@ body {
       margin-bottom: 1.8rem;
 }
 
-.login-form label {
+.common-form label {
       display: block;
       font-size: 0.9rem;
       font-weight: 500;
@@ -152,7 +152,7 @@ body {
       margin-bottom: 0.25rem;
 }
 
-.login-form input {
+.common-form input {
       width: 100%;
       padding: 0.7rem 0.9rem;
       font-size: 1rem;
@@ -164,13 +164,13 @@ body {
       outline: none;
 }
 
-.login-form input:focus {
+.common-form input:focus {
       border-color: #6c7a91;
       background: white;
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
 }
 
-.login-form button {
+.common-form button {
       width: 100%;
       padding: 0.75rem;
       font-size: 1rem;
@@ -184,12 +184,12 @@ body {
       margin-top: 0.25rem;
 }
 
-.login-form button:hover {
+.common-form button:hover {
 	background: var(--back);
 	color: var(--text);
 }
 
-.login-form button:active {
+.common-form button:active {
       transform: scale(0.98);
 }
 
@@ -220,12 +220,12 @@ body {
 		font-size: 1.4rem;
 	}
 
-	.login-form input {
+	.common-form input {
 		padding: 0.65rem 0.8rem;
 		font-size: 0.95rem;
 	}
 
-	.login-form button {
+	.common-form button {
 		padding: 0.7rem;
 		font-size: 0.95rem;
 	}
@@ -298,9 +298,11 @@ body {
 	font-size: 1.5rem;
 }
 
-.add-note-btn {
+.add-btn {
 	display: block;
 	background: var(--text);
+	margin: 1rem;
+	padding: 0.5rem;
 	color: var(--fore);
 	border: 2px solid var(--fore);
 	font-size: 1.25rem;
@@ -309,7 +311,7 @@ body {
 	cursor: pointer;
 }
 
-.add-note-btn:hover {
+.add-btn:hover {
 	background: var(--fore);
 	color: var(--text);
 	border-color: var(--text);
@@ -353,3 +355,14 @@ body {
 .searchbar button:hover {
 	box-shadow: 2px 2px 2px black;
 }
+
+.create-box {
+	background: var(--fore);
+	color: var(--text);
+	border-radius: 5px;
+	border: 2px solid var(--text);
+	padding: 1rem;
+	width: 100%;
+	margin-top: 1rem;
+}
+
