@@ -366,3 +366,33 @@ body {
 	margin-top: 1rem;
 }
 
+.headnote {
+	margin: 1rem;
+}
+
+.bodynote {
+	border-bottom: 2px solid var(--text);
+	border-top: 2px solid var(--text);
+}
+
+.footnote {
+	margin: 1rem;
+}
+
+.delete {
+	background: red;
+	color: var(--text);
+	padding: 0.5rem;
+	font-size: 1rem;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.update {
+	text-decoration: none;
+	display: inline-block;
+	background: yellow;
+	color: var(--back);
+	padding: 0.5rem;
+	font-size: 1rem;
+}

@@ -5,8 +5,8 @@
 <h2>Are you sure you want to delete Course : {{ course.title }}?</h2>
 <form method="POST">
 	{% csrf_token %}
-	<button type="submit">YES</button>
+	<button class="delete" type="submit">YES</button>
 </form>
-<a href="{% url 'courses:list' %}">back to course list</a>
+<div class="extra"><a href="{% url 'courses:list' %}">back to course list</a></div>
 
 {% endblock %}

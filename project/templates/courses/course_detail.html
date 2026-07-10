@@ -5,7 +5,8 @@
 	<a href="{% url 'courses:list' %}">←</a> | {{ course.title }} &gt;
 </div>
 
-
+<a href="{% url 'courses:delete' course.id %}" class="delete">&times; Delete course</a>
+<a href="{% url 'courses:update' course.id %}" class="update">✏️ Edit course</a>
 <h4>{{ course.desc }}</h4>
 <a href="{% url 'notes:create' course.id %}" class="add-btn">+ add note</a>
 {% for note in notes %}

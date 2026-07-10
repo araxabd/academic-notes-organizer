@@ -6,9 +6,20 @@
 	<a href="{% url 'courses:detail' note.course.id %}">← | {{ note.course.title }} &gt;</a> {{ note.title }} &gt;
 </div>
 
-<h1>{{ note.title }}</h1>
-<h2>{{ note.desc }}</h2>
-<p>{{ content_md|safe }}</p>
-<sup>{{ note.created }}</sup>
+
+<div class="headnote">
+	<h1>{{ note.title }}</h1>
+	<a href="{% url 'notes:delete' note.id %}" class="delete">&times; Delete this note</a>
+	<a href="{% url 'notes:update' note.id %}" class="update">✏️ Edit this note</a>
+	<h2>{{ note.desc }}</h2>
+</div>
+
+<div class="bodynote">
+	<p>{{ content_md|safe }}</p>
+</div>
+
+<div class="footnote">
+	<sup>{{ note.created }}</sup>
+</div>
 
 {% endblock %}
