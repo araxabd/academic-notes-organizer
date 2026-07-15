@@ -18,6 +18,12 @@
 	<p>{{ content_md|safe }}</p>
 </div>
 
+<div class="notefiles">
+	{% for file in files %}
+		<a href="">{{ file.title }}</a>
+	{% endfor %}
+</div>
+
 <div class="footnote">
 	<sup>{{ note.created }}</sup>
 </div>
