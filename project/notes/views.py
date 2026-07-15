@@ -21,11 +21,6 @@ def note_create(request, course_id):
     if request.method == "POST":
         note_form = NoteForm(request.POST)
         file_form = NoteFileForm(request.POST, request.FILES)
-        print(note_form.is_valid())
-        print(file_form.is_valid())
-        print(request.FILES)
-        print(request.FILES.getlist("files"))
-
         if note_form.is_valid() and file_form.is_valid():
             note = note_form.save(commit=False)
             note.owner = request.user
