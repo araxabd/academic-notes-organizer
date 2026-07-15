@@ -10,7 +10,7 @@ from markdown import markdown
 @login_required
 def note_detail(request, note_id):
     note = get_object_or_404(Note, id=note_id, owner=request.user)
-    files = NoteFile.objects.filter(owner=request.user, note=note)
+    files = note.files.all()
     content_md = markdown(note.content)
     return render(request, 'notes/note_detail.html', {'note': note, 'content_md': content_md, 'files': files})
 
