@@ -26,7 +26,7 @@ def note_create(request, course_id):
             note.owner = request.user
             note.course = course
             note.save()
-            for file in request.FILES.getlist("files"):
+            for file in file_form.cleaned_data["files"]:
                 note_file = NoteFile(note=note,owner=request.user,title=file.name, file=file, size=file.size)
                 note_file.full_clean()
                 note_file.save()
@@ -40,13 +40,30 @@ def note_create(request, course_id):
 def note_update(request, note_id):
     note = get_object_or_404(Note, id=note_id, owner=request.user)
     if request.method == "POST":
-        form = NoteForm(request.POST, instance=note)
-        if form.is_valid():
-            form.save()
-            return redirect('courses:detail', course_id=note.course.id)
+        note_form = NoteForm(request.POST, instance=note)
+        file_form = NoteFileForm(request.POST, request.FILES)
+        if note_form.is_valid() and file_form.is_valid():
+            note = note_form.save()
+
+            deleted_files_ids = request.POST.getlist("deleted_files")
+            deleted_files = note.files.filter(id__in=deleted_files_ids)
+            for file in deleted_files:
+                file.file.delete(save=False)
+                file.delete()
+
+            print(file_form.cleaned_data)
+
+            for file in file_form.cleaned_data["files"]:
+                note_file = NoteFile(note=note, owner=request.user, title=file.name, file=file, size=file.size)
+                note_file.full_clean()
+                note_file.save()
+
+            return redirect('notes:detail', note_id=note.id)
     else:
-        form = NoteForm(instance=note)
-    return render(request, 'notes/note_update.html', {'form': form})
+        note_form = NoteForm(instance=note)
+        file_form = NoteFileForm()
+        files = note.files.all()
+    return render(request, 'notes/note_update.html', {'note_form': note_form, 'file_form': file_form, 'files': files})
 
 @login_required
 def note_delete(request, note_id):

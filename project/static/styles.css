@@ -400,3 +400,15 @@ body {
 #id_desc {
 	height: 5rem;
 }
+
+.delete_list > div > input {
+	width: 1rem;
+}
+
+.delete_list > div > label {
+	display: inline;
+}
+
+.link {
+	color: var(--text);
+}

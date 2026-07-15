@@ -5,7 +5,7 @@
 	<form method="POST" enctype="multipart/form-data" class="common-form">
 		{% csrf_token %}
 		{{ note_form.as_p }}
-		<label>File attachments: </label>
+		<h4>File attachments: </h4>
 		{{ file_form.as_p }}
 		<button type="submit">Create</button>
 	</form>

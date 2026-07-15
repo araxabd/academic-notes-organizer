@@ -2,9 +2,20 @@
 
 {% block content %}
 <div class="create-box">
-	<form method="POST" class="common-form">
+	<form method="POST" class="common-form" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form.as_p }}
+		{{ note_form.as_p }}
+		<h4>Select the files that you want to delete : </h4>
+		<div class="delete_list">
+		{% for file in files %}
+		<div>
+			<input type="checkbox" name="deleted_files" value="{{ file.id }}" id="{{ file.id }}" /> 
+			<label for="{{ file.id }}">{{ file.title }}</label>
+		</div>
+		{% endfor %}
+		</div>
+		<h4>Attach new files :</h4>
+		{{ file_form.as_p }}
 		<button type="submit">Save changes</button>
 	</form>
 </div>
