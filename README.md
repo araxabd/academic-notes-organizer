@@ -7,3 +7,4 @@ AP | Final project | University of Guilan
 - [ ] markdown editor
 - [ ] note list filtering
 - [ ] Marketplace
+- [ ] custom 404
