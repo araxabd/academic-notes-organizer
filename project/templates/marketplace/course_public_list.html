@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+{% block content %}
+
+{% for course in courses %}
+<div class="course">
+	<h2>{{ course.title }}<small>(Average score : {{ course.rating }})</small></h2>
+	<p>{{ course.desc }}</p>
+	<a href="{% url 'courses:detail' course.id %}">Notes of this course</a>
+	<small>Created at : {{ course.created }} | Last update: {{ course.updated }}</small>
+</div>
+{% endfor %}
+{% endblock %}
