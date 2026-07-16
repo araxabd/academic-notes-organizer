@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'courses.apps.CoursesConfig',
-    'notes.apps.NotesConfig'
+    'notes.apps.NotesConfig',
+    'marketplace.apps.MarketplaceConfig'
 ]
 
 MIDDLEWARE = [
