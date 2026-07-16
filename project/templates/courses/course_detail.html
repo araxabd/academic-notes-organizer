@@ -12,7 +12,7 @@
 {% for note in notes %}
 <a href="{% url 'notes:detail' note.id %}" class="note">
 	<h5>{{ note.title }}</h5>
-	<p>{{ note.desc }}</p>
+	<p>{{ note.desc | truncatechars:500 }}</p>
 	<small>Created at: {{ note.created }} | Last update: {{ note.updated }}</small>
 </a>
 {% empty %}

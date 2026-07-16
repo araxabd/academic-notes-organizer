@@ -6,7 +6,7 @@
 {% for course in courses %}
 <div class="course">
 	<h2>{{ course.title }}</h2>
-	<p>{{ course.desc }}</p>
+	<p>{{ course.desc | truncatechars:500 }}</p>
 	<a href="{% url 'courses:detail' course.id %}">Notes of this course</a>
 	<small>Created at : {{ course.created }} | Last update: {{ course.updated }}</small>
 </div>
