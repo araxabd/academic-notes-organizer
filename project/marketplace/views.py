@@ -9,5 +9,5 @@ def course_public_list(request):
 
 def course_public_profile(request, course_id):
     course = get_object_or_404(Course, id=course_id, is_public=True)
-    notes = course.notes.filter(is_public=True).order_by("created")
+    notes = course.notes.filter(is_public=True).only("title", "desc", "created", "updated").order_by("created")
     return render(request, 'marketplace/course_public_profile.html', {'course': course, 'notes': notes})
