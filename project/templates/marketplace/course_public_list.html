@@ -9,4 +9,17 @@
 	<small>Created at : {{ course.created }} | Last update: {{ course.updated }}</small>
 </div>
 {% endfor %}
+
+<div class="paginator">
+	{% if courses.has_previous %}
+	<a href="?page=1">First</a> | 
+	<a href="?page={{ courses.previous_page_number }}">&laquo; Previous</a>
+	{% endif %}
+	<span>Page {{ courses.number }} of {{ courses.paginator.num_pages }}</span>
+
+	{% if courses.has_next %}
+	<a href="?page={{ courses.next_page_number }}">Next &raquo;</a> | 
+	<a href="?page={{ courses.paginator.num_pages }}">Last</a>
+	{% endif %}
+</div>
 {% endblock %}

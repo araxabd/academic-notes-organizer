@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from .models import Course
 from .forms import CourseForm
@@ -6,8 +7,11 @@ from .forms import CourseForm
 @login_required
 def course_list(request):
     courses = Course.objects.filter(owner=request.user)
+    paginator = Paginator(courses, 5)
+    page_number = request.GET.get('page')
+    page_courses = paginator.get_page(page_number)
     context = {
-            'courses': courses
+            'courses': page_courses
             }
     return render(request, 'courses/course_list.html', context)
 
