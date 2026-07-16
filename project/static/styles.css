@@ -412,3 +412,8 @@ body {
 .link {
 	color: var(--text);
 }
+
+.not_link {
+	pointer-events: none;
+}
+

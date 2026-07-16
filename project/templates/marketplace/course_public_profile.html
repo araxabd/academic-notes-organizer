@@ -1,0 +1,20 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="address">
+	<a href="{% url 'marketplace:course_public_list' %}">←</a> | {{ course.title }} &gt;
+</div>
+
+<h5>{{ course.desc }}</h5>
+<h4> Notes : </h4>
+{% for note in notes %}
+<div class="note not_link">
+	<h5>{{ note.title }}</h5>
+	<p>{{ note.desc }}</p>
+	<small>Created at: {{ note.created }} | Last update: {{ note.updated }}</small>
+</div>
+{% empty %}
+<h5>There is no public notes!</h5>
+{% endfor %}
+
+{% endblock %}
