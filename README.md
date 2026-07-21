@@ -8,3 +8,4 @@ AP | Final project | University of Guilan
 - [ ] note list filtering
 - [ ] Marketplace
 - [ ] custom 404
+- [ ] titles for templates
