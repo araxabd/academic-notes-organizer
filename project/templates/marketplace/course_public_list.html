@@ -3,7 +3,7 @@
 
 {% for course in courses %}
 <div class="course">
-	<h2>{{ course.title }}<small>(Average score : {{ course.rating }})</small></h2>
+	<h2>{{ course.title }}{% if course.rating %}<small>(Average score : {{ course.rating }})</small>{% endif %}</h2>
 	<p>{{ course.desc|truncatechars:500 }}</p>
 	<a href="{% url 'marketplace:course_public_profile' course.id %}">See more</a>
 	<small>Created at : {{ course.created }} | Last update: {{ course.updated }}</small>
