@@ -9,3 +9,4 @@ AP | Final project | University of Guilan
 - [ ] Marketplace
 - [ ] custom 404
 - [ ] titles for templates
+- [ ] Switch to PostgreSQL
