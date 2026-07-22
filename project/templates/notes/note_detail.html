@@ -11,7 +11,7 @@
 	<h1>{{ note.title }}</h1>
 	<a href="{% url 'notes:delete' note.id %}" class="delete">&times; Delete this note</a>
 	<a href="{% url 'notes:update' note.id %}" class="update">✏️ Edit this note</a>
-	<h2>{{ note.desc }}</h2>
+	<h2>{{ note.desc|linebreaks }}</h2>
 </div>
 
 <div class="bodynote">

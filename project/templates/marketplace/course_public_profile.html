@@ -5,7 +5,7 @@
 	<a href="{% url 'marketplace:course_public_list' %}">←</a> | {{ course.title }} &gt;
 </div>
 <strong>Average score: {{ course.rating }}</strong>
-<h5>{{ course.desc }}</h5>
+<h5>{{ course.desc|linebreaks }}</h5>
 <h3 style="padding-top: 1rem;font-size: 2rem;"> Notes : </h3>
 {% for note in notes %}
 <div class="note not_link">

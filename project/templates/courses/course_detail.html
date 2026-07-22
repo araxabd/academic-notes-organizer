@@ -7,7 +7,7 @@
 
 <a href="{% url 'courses:delete' course.id %}" class="delete">&times; Delete course</a>
 <a href="{% url 'courses:update' course.id %}" class="update">✏️ Edit course</a>
-<h4>{{ course.desc }}</h4>
+<h4>{{ course.desc|linebreaks }}</h4>
 <a href="{% url 'notes:create' course.id %}" class="add-btn">+ add note</a>
 {% for note in notes %}
 <a href="{% url 'notes:detail' note.id %}" class="note">
