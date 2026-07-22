@@ -4,7 +4,27 @@
 <div class="create-box">
 	<form method="POST" enctype="multipart/form-data" class="common-form">
 		{% csrf_token %}
-		{{ note_form.as_p }}
+		<p>
+		<label for="id_title">Title: </label>
+		{{ note_form.title }}
+		</p>
+		<p>
+		<label for="id_desc">Description: </label>
+		{{ note_form.desc }}
+		</p>
+		<p>
+		<label for="id_content">Content: </label>
+		{{ note_form.content }}
+		</p>
+		<p>
+		<label for="id_is_public">Is this note public?</label>
+		{{ note_form.is_public }}
+		</p>
+		<p>
+		<label for="id_tags">Tags (separated with comma):</label>
+		<input type="text" name="tags" id="id_tags" placeholder="something, something else, ...">
+		</p>
+
 		<h4>File attachments: </h4>
 		{{ file_form.as_p }}
 		<button type="submit">Create</button>

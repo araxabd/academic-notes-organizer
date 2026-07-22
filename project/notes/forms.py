@@ -4,7 +4,7 @@ from .models import Note
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ("title", "desc", "content","is_public", "tags")
+        fields = ("title", "desc", "content","is_public") 
 
 
 class MultipleFileWidget(forms.ClearableFileInput):

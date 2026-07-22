@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from courses.models import Course
-from .models import Note, NoteFile
+from .models import Note, NoteFile, Tag
 from .forms import NoteForm, NoteFileForm
 
 from markdown import markdown
@@ -21,11 +21,17 @@ def note_create(request, course_id):
     if request.method == "POST":
         note_form = NoteForm(request.POST)
         file_form = NoteFileForm(request.POST, request.FILES)
+        if 'tags' in request.POST:
+            tags = request.POST.get("tags")
+            tags = [tag.strip().lower() for tag in tags.split(',') if tag.strip()]
         if note_form.is_valid() and file_form.is_valid():
             note = note_form.save(commit=False)
             note.owner = request.user
             note.course = course
             note.save()
+            for name in tags:
+                tag, is_created = Tag.objects.get_or_create(name=name)
+                note.tags.add(tag)
             for file in file_form.cleaned_data["files"]:
                 note_file = NoteFile(note=note,owner=request.user,title=file.name, file=file, size=file.size)
                 note_file.full_clean()
