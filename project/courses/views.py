@@ -6,7 +6,7 @@ from .forms import CourseForm
 
 @login_required
 def course_list(request):
-    courses = Course.objects.filter(owner=request.user)
+    courses = Course.objects.filter(owner=request.user).order_by("-created")
     paginator = Paginator(courses, 5)
     page_number = request.GET.get('page')
     page_courses = paginator.get_page(page_number)

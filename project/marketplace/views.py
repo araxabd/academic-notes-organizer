@@ -6,7 +6,7 @@ from .models import Rating, Comment
 from .forms import RatingForm, CommentForm
 
 def course_public_list(request):
-    courses = Course.objects.filter(is_public=True).annotate(rating=Avg("ratings__score"))
+    courses = Course.objects.filter(is_public=True).annotate(rating=Avg("ratings__score")).order_by("-created")
     paginator = Paginator(courses, 5)
     page_number = request.GET.get('page')
     page_courses = paginator.get_page(page_number)
