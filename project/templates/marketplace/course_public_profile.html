@@ -5,7 +5,15 @@
 	<a href="{% url 'marketplace:course_public_list' %}">←</a> | {{ course.title }} &gt;
 </div>
 <strong>Average score: {{ course.rating }}</strong>
-<h5>{{ course.desc|linebreaks }}</h5>
+<div class="desc">
+{{ course.desc|linebreaks }}
+</div>
+{% if course.price == 0 %}
+	<button class="purchase-btn" onclick="alert('this segment is coming soon!')">Purchase : Free</button>
+{% else %}
+	<button class="purchase-btn" onclick="alert('this segment is coming soon!')">Purchase : {{ course.price }} Rials</button>
+{% endif %}
+
 <h3 style="padding-top: 1rem;font-size: 2rem;"> Notes : </h3>
 {% for note in notes %}
 <div class="note not_link">

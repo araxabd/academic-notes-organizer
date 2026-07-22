@@ -6,6 +6,11 @@
 	<h2>{{ course.title }}</h2>
 	{% if course.rating %}<strong>(Average score : {{ course.rating }})</strong>{% endif %}
 	<p>{{ course.desc|truncatechars:500 }}</p>
+	{% if course.price == 0 %}
+	<h3>Free</h3>
+	{% else %}
+	<h3>Price : {{ course.price }} Rials</h3>
+	{% endif %}
 	<a href="{% url 'marketplace:course_public_profile' course.id %}">See more</a>
 	<small>Created at : {{ course.created }} | Last update: {{ course.updated }}</small>
 </div>

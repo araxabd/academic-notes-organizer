@@ -463,3 +463,25 @@ body {
 	margin-top: 1rem;
 	padding: 1rem;
 }
+
+.decs {
+	padding: 1rem;
+	line-height: 1.5rem;
+}
+
+.purchase-btn {
+	display: block;
+	padding: 1rem;
+	width: 50%;
+	margin: 1rem auto;
+	background: var(--text);
+	color: black;
+	border: none;
+	border-radius: 2rem;
+	cursor: pointer;
+}
+
+.purchase-btn:hover {
+	background: black;
+	color: var(--text);
+}
