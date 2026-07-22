@@ -38,9 +38,11 @@ def course_public_profile(request, course_id):
                 comment.save()
         return redirect("marketplace:course_public_profile", course_id=course.id)
     notes = course.notes.filter(is_public=True).only("title", "desc", "created", "updated").order_by("created")
+    comments = course.comments.select_related("user").order_by("-created")
     context = {
             'course': course,
             'notes': notes,
+            'comments': comments,
             'rating_form': rating_form,
             'comment_form': comment_form
             }

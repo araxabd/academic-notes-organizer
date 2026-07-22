@@ -444,3 +444,22 @@ body {
 	padding: 1rem;
 	margin-top: 1rem;
 }
+
+.comments {
+	background: var(--text);
+	color: var(--fore);
+	padding: 1rem;
+	margin-top: 1rem;
+	border-radius: 5px;
+	max-height: 20rem;
+	overflow: auto;
+	border: 2px solid var(--text);
+}
+
+.comment-message {
+	background: var(--back);
+	color: var(--text);
+	border-radius: 5px;
+	margin-top: 1rem;
+	padding: 1rem;
+}

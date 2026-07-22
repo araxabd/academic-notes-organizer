@@ -27,6 +27,22 @@
 </div>
 {% endif %}
 
+<h3 style="padding-top: 1rem;font-size: 2rem;"> Comments : </h3>
+<div class="comments">
+	{% for comment in comments %}
+	<div class="comment-message">
+		<h5>{{ comment.user.username }}</h5>
+		<small>Created at :{{ comment.created }} | Last update : {{ comment.updated }}</small>
+		<p>
+		{{ comment.content|linebreaks }}
+		</p>
+	</div>
+	{% empty %}
+	<strong>There is no comment submitted about this course.</strong>
+	{% endfor %}
+</div>
+
+
 {% if comment_form %}
 <div class="comment-box">
 	<form class="common-form" method="POST">
