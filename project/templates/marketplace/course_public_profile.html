@@ -4,7 +4,7 @@
 <div class="address">
 	<a href="{% url 'marketplace:course_public_list' %}">←</a> | {{ course.title }} &gt;
 </div>
-
+<strong>Average score: {{ course.rating }}</strong>
 <h5>{{ course.desc }}</h5>
 <h4> Notes : </h4>
 {% for note in notes %}
@@ -16,5 +16,25 @@
 {% empty %}
 <h5>There is no public notes!</h5>
 {% endfor %}
+
+{% if rating_form %}
+<div class="rate-box">
+	<form class="common-form" method="POST">
+		{% csrf_token %}
+		{{ rating_form }}
+		<button type="submit" name="rating_submit">Rate</button>
+	</form>
+</div>
+{% endif %}
+
+{% if comment_form %}
+<div class="comment-box">
+	<form class="common-form" method="POST">
+		{% csrf_token %}
+		{{ comment_form }}
+		<button type="submit" name="comment_submit">Comment</button>
+	</form>
+</div>
+{% endif %}
 
 {% endblock %}
