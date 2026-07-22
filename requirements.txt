@@ -3,3 +3,4 @@ Django==6.0.6
 Markdown==3.10.2
 python-magic==0.4.27
 sqlparse==0.5.5
+tzdata==2026.3
