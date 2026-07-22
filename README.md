@@ -6,7 +6,9 @@ AP | Final project | University of Guilan
 - [x] markdown preview
 - [ ] markdown editor
 - [ ] note list filtering
-- [ ] Marketplace
+- [x] Marketplace
+- [ ] credit and through model for Marketplace
 - [ ] custom 404
 - [ ] titles for templates
 - [ ] Switch to PostgreSQL
+- [ ] Dockerize
