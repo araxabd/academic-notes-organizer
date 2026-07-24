@@ -35,7 +35,9 @@ def course_list(request):
     page_number = request.GET.get('page')
     page_courses = paginator.get_page(page_number)
     context = {
-            'courses': page_courses
+            'courses': page_courses,
+            'order': order,
+            'q': q
             }
     return render(request, 'courses/course_list.html', context)
 

@@ -171,6 +171,10 @@ body {
       background: white;
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
 }
+.common-form input[type="checkbox"] {
+	display: inline;
+	width: 1rem;
+}
 
 .common-form button {
       width: 100%;
@@ -531,24 +535,25 @@ body {
 	border-radius: 5px;
 }
 
-.search > form {
+.search > form > fieldset {
 	display: inline;
 }
 
-.search > a {
+.search > form > a {
 	background: var(--back);
 	color: var(--text);
 	text-decoration: none;
 	padding: 0.5rem;
 	cursor: pointer;
 	border-radius: 1rem;
+	display: inline-block;
 }
 
-.search > a:hover {
+.search > form > a:hover {
 	background: var(--fore);
 }
 
-.search > form > input {
+.search > form > fieldset > input {
 	outline: none;
 	border: 2px solid var(--fore);
 	background: var(--text);
@@ -556,7 +561,7 @@ body {
 	padding: 0.5rem;
 }
 
-.search > form > button {
+.search > form > fieldset > button {
 	padding: 0.5rem;
 	background: var(--fore);
 	color: var(--text);
@@ -567,7 +572,25 @@ body {
 	border: none;
 }
 
-.search > form > button:hover {
+.search > form > fieldset > button:hover {
 	background: var(--back);
 }
 
+fieldset {
+	border: none;
+	outline: none;
+}
+
+#choose-courses {
+	height: 4rem;
+	overflow: auto;
+	border: 2px solid var(--text);
+	border-radius: 0.5rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#choose-courses > label {
+	font-size: 1rem;
+	padding: 0.5rem;
+}

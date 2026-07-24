@@ -6,6 +6,61 @@
 	<a href="{% url 'courses:list' %}">←</a> | Search "{{ searched_phrase }}" &gt;
 </div>
 
+
+
+<div class="search">
+	<form method="GET">
+		<fieldset>
+			<input name="q" type="search" placeholder="Search Note..." value="{{ q }}"/>
+			<button type="submit" class="search-btn">Search</button>
+		</fieldset>
+		<a href="#filter-box">▼ Filter and Order</a>
+		<div id="filter-box" class="modal-wrap">
+			<div class="modal-box">
+				<a href="#" class="close-modal">&times;</a>
+				<fieldset class="common-form">
+					<label for="choose-courses">Courses : </label>
+					<div id="choose-courses">
+						{% for course in courses %}
+						<label>
+							<input type="checkbox"
+							       name="course"
+							       value="{{ course.id }}"
+							       {% if course.id|stringformat:'s' in filtered_courses %}
+							       checked
+							       {% endif %}
+							       > {{ course.title }}
+						</label>
+						{% endfor %}
+					</div>
+					<label for="from_id">From : </label>
+					<input type="date" id="from_id" name="from" value="{{ request.GET.from }}">
+					<label for="to_id">To : </label>
+					<input type="date" id="to_id" name="to" value="{{ request.GET.to }}">
+					<label for="public_id">
+						<input type="checkbox" id="public_id" name="public" value="true" 
+						{% if request.GET.public == 'true' %}checked{% endif %}>
+					Only show public notes</label>
+					<label for="order_id">Order by : </label>
+					<select name="order">
+						<option value="" {% if order == '' %}selected{% endif %}>Newest first</option>
+						<option value="old" {% if order == 'old' %}selected{% endif %}>Oldest first</option>
+						<option value="newmodify" {% if order == 'newmodify' %}selected{% endif %}>Newest modified first</option>
+						<option value="oldmodify" {% if order == 'oldmodify' %}selected{% endif %}>Oldest modified first</option>
+					</select>
+					<button type="submit">Apply</button>
+				</fieldset>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+
+
 {% for note in notes %}
 <a href="{% url 'notes:detail' note.id %}" class="note">
 	<h5>{{ note.title }}</h5>
@@ -15,6 +70,20 @@
 {% empty %}
 <h5>No notes!</h5>
 {% endfor %}
+
+<div class="paginator">
+	{% if notes.has_previous %}
+	<a href="?page=1">First</a> | 
+	<a href="?page={{ notes.previous_page_number }}">&laquo; Previous</a>
+	{% endif %}
+	<span>Page {{ notes.number }} of {{ notes.paginator.num_pages }}</span>
+
+	{% if notes.has_next %}
+	<a href="?page={{ notes.next_page_number }}">Next &raquo;</a> | 
+	<a href="?page={{ notes.paginator.num_pages }}">Last</a>
+	{% endif %}
+</div>
+
 
 
 {% endblock %}

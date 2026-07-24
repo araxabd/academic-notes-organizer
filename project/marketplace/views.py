@@ -42,7 +42,7 @@ def course_public_list(request):
     paginator = Paginator(courses, 5)
     page_number = request.GET.get('page')
     page_courses = paginator.get_page(page_number)
-    return render(request, 'marketplace/course_public_list.html', {'courses': page_courses})
+    return render(request, 'marketplace/course_public_list.html', {'courses': page_courses, 'q': q, 'order': order})
 
 def course_public_profile(request, course_id):
     course = get_object_or_404(Course.objects.annotate(rating=Avg("ratings__score")), id=course_id, is_public=True)

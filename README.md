@@ -5,7 +5,7 @@ AP | Final project | University of Guilan
 - [x] File management
 - [x] markdown preview
 - [ ] markdown editor
-- [ ] note list filtering
+- [x] note list filtering
 - [x] Marketplace
 - [ ] credit and through model for Marketplace
 - [ ] custom 404

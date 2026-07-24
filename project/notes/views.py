@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.paginator import Paginator
 from courses.models import Course
 from .models import Note, NoteFile, Tag
 from .forms import NoteForm, NoteFileForm
@@ -82,5 +83,39 @@ def note_delete(request, note_id):
 @login_required
 def note_search(request):
     q = request.GET.get('q', '')
-    notes = Note.objects.filter(Q(owner=request.user) & ( Q(title__icontains=q) | Q(content__icontains=q) | Q(desc__icontains=q) | Q(tags__icontains=q)))
-    return render(request, 'notes/note_search.html', {'notes': notes, 'searched_phrase': q})
+    notes = Note.objects.filter(owner=request.user)
+    filtered_courses = request.GET.getlist('course')
+    from_date = request.GET.get("from")
+    to_date = request.GET.get("to")
+    is_public = request.GET.get("public")
+    order = request.GET.get("order")
+    if q:
+        notes = notes.filter(Q(title__icontains=q) | Q(desc__icontains=q) | Q(content__icontains=q) | Q(tags__name__icontains=q)).distinct()
+
+    if filtered_courses:
+        notes = notes.filter(course_id__in=filtered_courses)
+
+    if from_date:
+        notes = notes.filter(created__gte=from_date)
+
+    if to_date:
+        notes = notes.filter(created__lte=to_date)
+
+    if is_public == 'true':
+        notes = notes.filter(is_public=True)
+
+    if order == "newmodify":
+        notes = notes.order_by("-updated")
+    elif order == "oldmodify":
+        notes = notes.order_by("updated")
+    elif order == "old":
+        notes = notes.order_by("created")
+    else:
+        notes = notes.order_by("-created")
+
+    paginator = Paginator(notes, 5)
+    page_number = request.GET.get('page')
+    page_notes = paginator.get_page(page_number)
+
+    courses = Course.objects.filter(owner=request.user)
+    return render(request, 'notes/note_search.html', {'notes': page_notes, 'q': q, 'courses': courses, 'filtered_courses': filtered_courses, 'order': order})
