@@ -29,6 +29,8 @@ def course_public_profile(request, course_id):
                 rating.user = request.user
                 rating.course = course
                 rating.save()
+                return redirect("marketplace:course_public_profile", course_id=course.id)
+
         elif "comment_submit" in request.POST:
             comment_form = CommentForm(request.POST)
             if comment_form.is_valid():
@@ -36,7 +38,7 @@ def course_public_profile(request, course_id):
                 comment.user = request.user
                 comment.course = course
                 comment.save()
-        return redirect("marketplace:course_public_profile", course_id=course.id)
+                return redirect("marketplace:course_public_profile", course_id=course.id)
     notes = course.notes.filter(is_public=True).only("title", "desc", "created", "updated").order_by("created")
     comments = course.comments.select_related("user").order_by("-created")
     context = {

@@ -28,8 +28,13 @@
 {% if rating_form %}
 <div class="rate-box">
 	<form class="common-form" method="POST">
+		{% if rating_form.score.errors %}
+		<div class="err">{{ rating_form.score.errors }}</div>
+		{% endif %}
 		{% csrf_token %}
-		{{ rating_form }}
+		{{ rating_form.score.label_tag }}
+		<small>0 to 5</small>
+		{{ rating_form.score }}
 		<button type="submit" name="rating_submit">Rate</button>
 	</form>
 </div>

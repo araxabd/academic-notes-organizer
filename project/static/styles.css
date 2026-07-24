@@ -135,7 +135,7 @@ body {
       letter-spacing: -0.3px;
 }
 
-.login-box .err {
+.err {
       color: var(--err);
       background: var(--text);
       padding: 0.5rem;
