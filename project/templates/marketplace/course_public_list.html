@@ -1,6 +1,38 @@
 {% extends '../base.html' %}
 {% block content %}
 
+<div class="search">
+	<form method="GET">
+		<input name="q" type="search" placeholder="Search Course..." value="{{ request.GET.q }}"/>
+		<button type="submit" class="search-btn">Search</button>
+	</form>
+	<a href="#filter-box">▼ Filter and Order</a>
+	<div id="filter-box" class="modal-wrap">
+		<div class="modal-box">
+			<a href="#" class="close-modal">&times;</a>
+			<form method="GET" class="common-form">
+				<label for="from_id">From : </label>
+				<input type="date" id="from_id" name="from" value="{{ request.GET.from }}">
+				<label for="to_id">To : </label>
+				<input type="date" id="to_id" name="to" value="{{ request.GET.to }}">
+				<label for="min_id">Minimum price : </label>
+				<input type="number" id="min_id" name="min" value="{{ request.GET.min }}">
+				<label for="max_id">Maximum price : </label>
+				<input type="number" id="max_id" name="max" value="{{ request.GET.max }}">
+				<label for="order_id">Order by : </label>
+				<select name="order">
+					<option value="" {% if request.GET.order == '' %}selected{% endif %}>Newest first</option>
+					<option value="old" {% if request.GET.order == 'old' %}selected{% endif %}>Oldest first</option>
+					<option value="rating" {% if request.GET.order == 'rating' %}selected{% endif %}>Most popular first</option>
+					<option value="cheap" {% if request.GET.order == 'cheap' %}selected{% endif %}>Cheapest first</option>
+					<option value="expensive" {% if request.GET.order == 'expensive' %}selected{% endif %}>Most expensive first</option>
+				</select>
+				<button type="submit">Apply</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 {% for course in courses %}
 <div class="course">
 	<h2>{{ course.title }}</h2>
