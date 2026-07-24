@@ -17,7 +17,11 @@
 <div class="bodynote">
 	<p>{{ content_md|safe }}</p>
 </div>
-
+<div class="tags">
+	{% for tag in tags %}
+	#<a href="{% url 'notes:tag' tag.slug %}">{{ tag.name }}</a>
+	{% endfor %}
+</div>
 <div class="notefiles">
 	<h4>Files of this note :</h4>
 	<ul>

@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<div class="address">
+	<a href="{% url 'courses:list' %}">←</a> | Tag : "{{ tag_name }}" &gt;
+</div>
+
+
+
+{% for note in notes %}
+<a href="{% url 'notes:detail' note.id %}" class="note">
+	<h5>{{ note.title }}</h5>
+	<p>{{ note.desc }}</p>
+	<small>Created at: {{ note.created }} | Last update: {{ note.updated }}</small>
+</a>
+{% empty %}
+<h5>No notes!</h5>
+{% endfor %}
+
+<div class="paginator">
+	{% if notes.has_previous %}
+	<a href="?page=1">First</a> | 
+	<a href="?page={{ notes.previous_page_number }}">&laquo; Previous</a>
+	{% endif %}
+	<span>Page {{ notes.number }} of {{ notes.paginator.num_pages }}</span>
+
+	{% if notes.has_next %}
+	<a href="?page={{ notes.next_page_number }}">Next &raquo;</a> | 
+	<a href="?page={{ notes.paginator.num_pages }}">Last</a>
+	{% endif %}
+</div>
+
+
+
+{% endblock %}

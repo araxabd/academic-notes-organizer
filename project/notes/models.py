@@ -9,7 +9,7 @@ note_file_storage = NoteFileStorage()
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    slug = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

@@ -12,8 +12,9 @@ from markdown import markdown
 def note_detail(request, note_id):
     note = get_object_or_404(Note, id=note_id, owner=request.user)
     files = note.files.all()
+    tags = note.tags.all()
     content_md = markdown(note.content)
-    return render(request, 'notes/note_detail.html', {'note': note, 'content_md': content_md, 'files': files})
+    return render(request, 'notes/note_detail.html', {'note': note, 'content_md': content_md, 'files': files, 'tags': tags})
 
 @login_required
 def note_create(request, course_id):
@@ -119,3 +120,14 @@ def note_search(request):
 
     courses = Course.objects.filter(owner=request.user)
     return render(request, 'notes/note_search.html', {'notes': page_notes, 'q': q, 'courses': courses, 'filtered_courses': filtered_courses, 'order': order})
+
+@login_required
+def note_tag(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    notes = tag.notes.all()
+
+    paginator = Paginator(notes, 5)
+    page_number = request.GET.get('page')
+    page_notes = paginator.get_page(page_number)
+
+    return render(request, 'notes/note_tag.html', {'tag_name': tag.name, 'notes': page_notes})
