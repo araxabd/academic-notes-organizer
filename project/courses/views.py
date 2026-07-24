@@ -1,12 +1,36 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from .models import Course
 from .forms import CourseForm
 
 @login_required
 def course_list(request):
-    courses = Course.objects.filter(owner=request.user).order_by("-created")
+    courses = Course.objects.filter(owner=request.user)
+    q = request.GET.get("q", "").strip()
+    from_date = request.GET.get("from")
+    to_date = request.GET.get("to")
+    order = request.GET.get("order")
+    if q:
+        courses = courses.filter(Q(title__icontains=q) | Q(desc__icontains=q))
+
+    if from_date:
+        courses = courses.filter(created__date__gte=from_date)
+
+    if to_date:
+        courses = courses.filter(created__date__lte=to_date)
+
+    if order == "newmodify":
+        courses = courses.order_by("-updated")
+    elif order == "oldmodify":
+        courses = courses.order_by("updated")
+    elif order == "old":
+        courses = courses.order_by("created")
+    else:
+        courses = courses.order_by("-created")
+
+
     paginator = Paginator(courses, 5)
     page_number = request.GET.get('page')
     page_courses = paginator.get_page(page_number)
