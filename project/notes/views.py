@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from courses.models import Course
 from .models import Note, NoteFile, Tag
-from .forms import NoteForm, NoteFileForm
+from .forms import NoteForm, NoteFileForm, NoteUpdateForm
 
 from markdown import markdown
 
@@ -47,11 +47,10 @@ def note_create(request, course_id):
 def note_update(request, note_id):
     note = get_object_or_404(Note, id=note_id, owner=request.user)
     if request.method == "POST":
-        note_form = NoteForm(request.POST, instance=note)
+        note_form = NoteUpdateForm(request.POST, instance=note)
         file_form = NoteFileForm(request.POST, request.FILES)
         if note_form.is_valid() and file_form.is_valid():
             note = note_form.save()
-
             deleted_files_ids = request.POST.getlist("deleted_files")
             deleted_files = note.files.filter(id__in=deleted_files_ids)
             for file in deleted_files:
@@ -65,7 +64,7 @@ def note_update(request, note_id):
 
             return redirect('notes:detail', note_id=note.id)
     else:
-        note_form = NoteForm(instance=note)
+        note_form = NoteUpdateForm(instance=note)
         file_form = NoteFileForm()
     files = note.files.all()
     return render(request, 'notes/note_update.html', {'note_form': note_form, 'file_form': file_form, 'files': files})

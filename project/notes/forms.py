@@ -8,6 +8,13 @@ class NoteForm(forms.ModelForm):
         fields = ("title", "desc", "content","is_public") 
 
 
+class NoteUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = ("title", "desc", "content","is_public", "tags")
+
+
+
 class MultipleFileWidget(forms.ClearableFileInput):
     allow_multiple_selected = True
 
