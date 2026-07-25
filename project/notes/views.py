@@ -36,7 +36,6 @@ def note_create(request, course_id):
                 note.tags.add(tag)
             for file in file_form.cleaned_data["files"]:
                 note_file = NoteFile(note=note,owner=request.user,title=file.name, file=file, size=file.size)
-                note_file.full_clean()
                 note_file.save()
             return redirect("notes:detail", note_id=note.id)
     else:
@@ -59,18 +58,16 @@ def note_update(request, note_id):
                 file.file.delete(save=False)
                 file.delete()
 
-            print(file_form.cleaned_data)
 
             for file in file_form.cleaned_data["files"]:
                 note_file = NoteFile(note=note, owner=request.user, title=file.name, file=file, size=file.size)
-                note_file.full_clean()
                 note_file.save()
 
             return redirect('notes:detail', note_id=note.id)
     else:
         note_form = NoteForm(instance=note)
         file_form = NoteFileForm()
-        files = note.files.all()
+    files = note.files.all()
     return render(request, 'notes/note_update.html', {'note_form': note_form, 'file_form': file_form, 'files': files})
 
 @login_required

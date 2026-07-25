@@ -1,5 +1,6 @@
 from django import forms
 from .models import Note
+from .validators import validate_mimetype
 
 class NoteForm(forms.ModelForm):
     class Meta:
@@ -17,9 +18,16 @@ class MultipleFileField(forms.FileField):
         if not data:
             return []
 
-        if isinstance(data, (list, tuple)):
-            return [super().clean(file,initial) for file in data]
+        if not isinstance(data, (list, tuple)):
+            data = [data]
 
-        return [super().clean(data, initial)]
+        cleaned_files = []
+
+        for file in data:
+            cleaned = super().clean(file, initial)
+            validate_mimetype(cleaned)
+            cleaned_files.append(cleaned)
+
+        return cleaned_files
 class NoteFileForm(forms.Form):
     files = MultipleFileField(required=False)

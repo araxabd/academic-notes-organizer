@@ -144,6 +144,14 @@ body {
       margin-bottom: 1.8rem;
 }
 
+.errorlist {
+      color: var(--err);
+      background: var(--text);
+      padding: 0.5rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+}
+
 .common-form label {
       display: block;
       font-size: 0.9rem;
