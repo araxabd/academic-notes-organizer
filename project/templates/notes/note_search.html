@@ -1,9 +1,11 @@
 {% extends '../base.html' %}
 
+{% block title %}Note Search : {{ q }}{% endblock %}
+
 {% block content %}
 
 <div class="address">
-	<a href="{% url 'courses:list' %}">←</a> | Search "{{ searched_phrase }}" &gt;
+	<a href="{% url 'courses:list' %}">←</a> | Search "{{ q }}" &gt;
 </div>
 
 

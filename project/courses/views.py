@@ -74,7 +74,7 @@ def course_update(request, course_id):
            return redirect('courses:list')
     else:
         form = CourseForm(instance=course)
-        return render(request, 'courses/course_update.html', { 'form': form })
+        return render(request, 'courses/course_update.html', { 'form': form , 'course_title': course.title})
 
 @login_required
 def course_delete(request, course_id):

@@ -67,7 +67,7 @@ def note_update(request, note_id):
         note_form = NoteUpdateForm(instance=note)
         file_form = NoteFileForm()
     files = note.files.all()
-    return render(request, 'notes/note_update.html', {'note_form': note_form, 'file_form': file_form, 'files': files})
+    return render(request, 'notes/note_update.html', {'note_form': note_form, 'file_form': file_form, 'files': files, 'note_title': note.title})
 
 @login_required
 def note_delete(request, note_id):

@@ -1,5 +1,7 @@
 {% extends '../base.html' %}
 
+{% block title %}Course : {{ course.title }}{% endblock %}
+
 {% block content %}
 <div class="address">
 	<a href="{% url 'marketplace:course_public_list' %}">←</a> | {{ course.title }} &gt;
