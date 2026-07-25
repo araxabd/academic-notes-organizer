@@ -9,6 +9,6 @@ AP | Final project | University of Guilan
 - [x] Marketplace
 - [ ] credit and through model for Marketplace
 - [ ] custom 404
-- [ ] titles for templates
+- [x] titles for templates
 - [ ] Switch to PostgreSQL
 - [ ] Dockerize
