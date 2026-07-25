@@ -179,6 +179,11 @@ body {
       background: white;
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
 }
+
+.common-form textarea {
+	resize: vertical;
+}
+
 .common-form input[type="checkbox"] {
 	display: inline;
 	width: 1rem;
@@ -602,3 +607,18 @@ fieldset {
 	font-size: 1rem;
 	padding: 0.5rem;
 }
+
+
+.toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	padding: 0.5rem;
+}
+
+.toolbar button {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	width: auto;
+}
+
