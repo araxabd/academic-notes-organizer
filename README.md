@@ -4,7 +4,7 @@ AP | Final project | University of Guilan
 ## TODO
 - [x] File management
 - [x] markdown preview
-- [ ] markdown editor
+- [x] markdown editor
 - [x] note list filtering
 - [x] Marketplace
 - [ ] credit and through model for Marketplace
