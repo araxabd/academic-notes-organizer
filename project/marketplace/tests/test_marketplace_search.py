@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.utils import timezone
 from courses.models import Course
-from marketplace.models import Rating, Comment
 
 User = get_user_model()
 
