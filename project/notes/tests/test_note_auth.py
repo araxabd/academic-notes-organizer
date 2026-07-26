@@ -6,7 +6,7 @@ from notes.models import Note
 
 User = get_user_model()
 
-class CourseAuthTest(TestCase):
+class NoteAuthTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(username="jalal", password="passwd123")
         self.course = Course.objects.create(title="Test Course", desc="This is a TestCourse", owner=self.user)
