@@ -71,7 +71,7 @@ def course_update(request, course_id):
         form = CourseForm(request.POST, instance=course)
         if form.is_valid():
            form.save()
-           return redirect('courses:list')
+           return redirect('courses:detail', course_id=course.id)
     else:
         form = CourseForm(instance=course)
         return render(request, 'courses/course_update.html', { 'form': form , 'course_title': course.title})
