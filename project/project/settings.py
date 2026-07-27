@@ -30,7 +30,6 @@ SECRET_KEY = 'django-insecure-17ly-6pl(ib%a=nfd(8qczr6)mkds#q23)kt0fx1q@uxe!q^lm
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        '192.168.1.77',
         'localhost'
         ]
 
@@ -89,8 +88,8 @@ DATABASES = {
         'NAME': getenv('DB_NAME'),
         'USER': getenv("DB_USER"),
         'PASSWORD': getenv("DB_PASSWORD"),
-        'HOST': getenv("DB_HOST"),
-        'PORT': getenv("DB_PORT")
+        'HOST': 'db', 
+        'PORT': 5432 
     }
 }
 

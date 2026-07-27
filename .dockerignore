@@ -1,0 +1,17 @@
+*.db
+.git/
+.env
+env
+venv/
+.venv/
+env/
+.env.*
+__pycache__/
+*.pyc
+*.log
+.gitignore
+*.swp
+*.sqlite3
+media/
+README.md
+LICENSE
