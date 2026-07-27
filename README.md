@@ -26,4 +26,4 @@ I haven't used anything (even a single chunk) from another project and I have wr
 - [ ] custom 404
 - [x] titles for templates
 - [x] Switch to PostgreSQL
-- [ ] Dockerize
+- [x] Dockerize
